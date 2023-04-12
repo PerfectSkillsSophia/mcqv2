@@ -83,13 +83,6 @@ def Cal_Accu(s1, s2):
 # Accuracy Calculation Method Ends
 
 
-s1 = "c"
-s2 = "a correct answer is c."
-
-pr = Cal_Accu(s1, s2)
-
-print("Accuracy of Answer is: ", pr, "%")
-
 # Test Cases
 # S1 is predefined answer
 # S2 is expected answer

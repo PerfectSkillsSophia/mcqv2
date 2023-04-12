@@ -96,7 +96,8 @@ def Add_question(request):
 		return HttpResponseRedirect(reverse("view", args=(ass_id,)))
 # ebb5f4cc42d841d0aa7369f975d9af42
 
-
+@staff_member_required
+@login_required(login_url='login')
 def view_analysis(request, ansId):
 	url = settings. MEDIA_URL
 	result = videoAns.objects.filter(ansId=ansId)
@@ -161,7 +162,8 @@ def generate_tras(request, ansId):
 	messages.success(request, 'Transcript is generated Successfully.')
 	return HttpResponseRedirect(ref_url)
 
-
+@staff_member_required
+@login_required(login_url='login')
 def generate_result(request):
 	if request.method == 'GET':
 		ansId = request.GET.get('ansId')
