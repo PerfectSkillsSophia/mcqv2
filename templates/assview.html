@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>Add Questions.</h1>
+    <form action="{% url 'Addquestion'  %}">
+        <div class="form-group">
+            <input class="form-control" name="que" type="que" placeholder="Write Question! "><br>
+            <input class="form-control" name="ops1" type="ops1" placeholder="Add Option 1! "><br>
+            <input class="form-control" name="ops2" type="ops2" placeholder="Add Option 2! "><br>
+            <input class="form-control" name="ops3" type="ops3" placeholder="Add Option 3! "><br>
+            <input class="form-control" name="ops4" type="ops4" placeholder="Add Option 4! ">
+        </div>
+        <div class="form-group">
+            <select class="form-control" name="ass" id="ass">
+                {% for ass in ass.all %}
+                <option value="{{ ass.assessmentName }}">{{ ass.assessmentName }}</option>
+                {% endfor %}
+            </select>
+
+        </div>
+        <div class="form-group"><button class="btn btn-primary btn-block my-2 my-sm-0" type="submit">ADD</button></div>
+    </form>
+    <hr>
+</div>
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <h1>Questions.</h1>
+        </div>
+        <div class="col-md-5">
+            {% for que in ques.all reversed %}
+            <h5>{{ que.quostion }}<h5>
+                    <ol type="A">
+                        <li>{{ que.ops1 }}</li>
+                        <li>{{ que.ops2 }}</li>
+                        <li>{{ que.ops3 }}</li>
+                        <li>{{ que.ops4 }}</li>
+                    </ol>
+                    {% endfor %}
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+    <hr>
+</div>
+
+{% endblock %}

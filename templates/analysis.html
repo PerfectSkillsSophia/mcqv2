@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% for video in result.all %}
+<section class="vh-100" style="background-color: rgb(255, 255, 255);margin-top: 50px;">
+  {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show text-center" role="alert">
+
+        <strong>{{ message }}</strong>
+
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+    {% endif %}
+  <div class="container h-100" style="margin-top: 5px;">
+  <div class="row">
+    <div class="col-md-5">
+      <video width="100%" height="100%" controls>
+        <source src="{{ url }}{{ video.videoAns }}" type="video/webm">
+      </video>
+    </div>
+    <div class="col-md-7">
+      <row>
+        <p>The Question and Answer for give submission: <br>{{ video.question }}</p>
+      <h4>Answer from video which is submitted.</h4>
+      {% if video.trasnscript %}
+      <p class="text-wrap text-break">"{{ video.trasnscript }}"</p>
+      {% else %}
+      <p>"Trasnscript is not yet genereted"</p>
+      <a href="{% url 'generate_transcript' ansId=video.ansId %}" class="btn btn-primary btn-block">Generate
+        Trascript</a>
+      {% endif %}
+    </row>
+<row>
+      <div class="card text-center">
+        <div class="card-body">
+          <form  action="{% url 'generate result' %}">
+          <div class="form-group">
+            <select class="form-control" name="ansId" id="ansId">
+            <option value="{{ video.ansId }}">UserName:{{ video.user_name }}</option>
+          </select>
+          </div>
+            <div class="form-group">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="A" checked>
+  <label class="form-check-label" for="exampleRadios1">
+    A
+  </label>
+            </div>
+            <div class="form-group">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="B" checked>
+  <label class="form-check-label" for="exampleRadios1">
+    B
+  </label>
+            </div>
+            <div class="form-group">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="C" checked>
+  <label class="form-check-label" for="exampleRadios1">
+    C
+  </label>
+            </div>
+            <div class="form-group">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="D" checked>
+  <label class="form-check-label" for="exampleRadios1">
+    D
+  </label>
+            </div>
+          <button class="btn btn-primary btn-block my-2 my-sm-0" type="submit">Generate Result</button>
+        </form>
+        </div>
+      </div>
+        <div class="card-header" style="margin-top: 5px;text-align: center;">
+          Accuracy of Answer is: {{ video.answer_accurecy }} %
+          Featured
+        </div>
+    </row>
+
+    </div>
+  </div>
+  
+</div>
+</section>
+
+<section class="vh-100" style="background-color: rgb(255, 255, 255);margin-top: 50px;">
+  <div class="container h-100" style="margin-top: 5px;">
+
+</div>
+</section>
+{% endfor %}
+
+{% endblock %}
