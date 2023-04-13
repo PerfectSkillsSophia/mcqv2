@@ -14,11 +14,11 @@
         {% for i in question %}
         <div class="question" {% if forloop.first %}style="display: block" {% else %}style="display: none" {% endif %}>
           <h5 id="que">Question {{ forloop.counter }}: {{ i }}</h5>
-          <ol type="A">
-            <li>Option : {{ i.ops1 }}</li>
-            <li>Option : {{ i.ops2 }}</li>
-            <li>Option : {{ i.ops3 }}</li>
-            <li>Option : {{ i.ops4 }}</li>
+          <ol style="list-style: none!important;">
+            <li>Option A : {{ i.ops1 }}</li>
+            <li>Option B : {{ i.ops2 }}</li>
+            <li>Option C : {{ i.ops3 }}</li>
+            <li>Option D : {{ i.ops4 }}</li>
           </ol>
         </div>
         {% endfor %}
@@ -34,9 +34,13 @@
         <ol>
           <li>Click <span class="text-success">Start</span> to start your video streaming</li>
           <li>Click <span class="text-success">Record</span> to start video recording</li>
-          <li>Click <span class="text-success">Review</span> to review your recorded answer</li>
+          <li>Click <span class="text-success">Next</span> to go on next question</li>
+          <li>Click <span class="text-success">Stop</span> to stop video recording</li>
           <li>Click <span class="text-success">Submit</span> to submit your video assessment</li>
         </ol>
+        <div class="alert alert-secondary" role="alert">
+          Kindly record your as : <span style="color: blue;">Option A is Correct. </span> (Example)
+        </div>
       </div>
       <div class="col-md-6">
         <code>Video will appear here</code>
@@ -61,25 +65,25 @@
     <hr>
     <!-- Action View  -->
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-md-3"><button class="btn btn-primary btn-lg btn-block"
+      <div class="col-md-4"><button class="btn btn-primary btn-lg btn-block"
           style=" margin-top: 5px; margin-bottom: 5px;" id="start">Start</button></div>
-      <div class="col-md-3"><button class="btn btn-primary btn-lg btn-block"
+      <div class="col-md-4"><button class="btn btn-primary btn-lg btn-block"
           style=" margin-top: 5px; margin-bottom: 5px;" id="record" disabled>Record</button></div>
-      <div class="col-md-3"><button class="btn btn-primary btn-lg btn-block"
+      <div class="col-md-4"><button class="btn btn-primary btn-lg btn-block"
           style=" margin-top: 5px; margin-bottom: 5px;" id="upload" disabled>Submit</button></div>
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <a class="btn btn-danger btn-lg" id="exit" href="{% url 'feedback' %}" role="button"
-              style="visibility: hidden; margin-top: 5px; margin-bottom: 5px; margin-left: 5px; margin-right: 5px; width: 100%;">Exit
-              Assessment</a>
-          </div>
       <div style="visibility: hidden;">
         <label for="vehicle1" style="visibility: hidden;">Echo cancellation:</label>
         <input type="checkbox" style="visibility: hidden;" id="echoCancellation"><br>
       </div>
       <hr>
     </div>
-
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <a class="btn btn-danger btn-lg" id="exit" href="{% url 'feedback' %}" role="button"
+        style="visibility: hidden; margin-top: 5px; margin-bottom: 5px; margin-left: 5px; margin-right: 5px; width: 100%;">Exit
+        Assessment</a>
+    </div>
   </div>
+
 
 </section>
 

@@ -1,4 +1,4 @@
-from thefuzz import fuzz, process
+from thefuzz import fuzz
 from langdetect import detect
 import re
 
@@ -36,11 +36,11 @@ def Cal_Accu(s1, s2):
                     return Percent_ratio
                 count -= 1
 
-        if checker.lower() == last.lower() and count == 1:
+        if checker.lower() == last.lower():
             Percent_ratio = 100
+        else:
+            Percent_ratio = 0
             return Percent_ratio
-
-    # Accuracy Calculation Method Starts
     lang = detect(s2)
 
     if (lang == "en") or (
@@ -81,39 +81,3 @@ def Cal_Accu(s1, s2):
 
 
 # Accuracy Calculation Method Ends
-
-
-# Test Cases
-# S1 is predefined answer
-# S2 is expected answer
-
-
-# Test Case 1
-# S1 = "c"
-# S2 = "option c"
-# Accuracy 100%
-
-# Test Case 2
-# S1 = "c"
-# S2 = "option b"
-# Accuracy 0%
-
-# Test Case 3
-# S1 = "c"
-# S2 = "c option"
-# Accuracy 100%
-
-# Test Case 4
-# S1 = "c"
-# S2 = "a option"
-# Accuracy 0%
-
-# Test Case 5
-# S1 = "c"
-# S2 = "a correct answer is c"
-# Accuracy 100%
-
-# Test Case 6
-# S1 = "c"
-# S2 = "a correct answer is d"
-# Accuracy 0%

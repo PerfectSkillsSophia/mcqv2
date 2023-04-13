@@ -8,7 +8,7 @@ from administration.models import *
 from django.urls import reverse
 from django.db.models import Q
 from sophia import settings
-from .result import *
+from .admin_functions import *
 from thefuzz import fuzz, process
 from langdetect import detect
 

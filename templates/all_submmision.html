@@ -30,9 +30,10 @@
         <div class="row">
             {% for result in results %}
             <div class="col-md-4" style="margin-top:10px ;">
-
                 <div class="card" style="width: 18rem; margin: 5px 5px 5px 5px;">
-                    <video controls src="{{ url }}{{ result.videoAns }}" type="video/webm"></video>
+                    <video style="width: auto; height: 240px;" controls>
+                        <source src="{{ url }}{{ result.videoAns }}" type="video/webm">
+                      </video>
                     <div class="card-body">
                         <h5 class="card-title">User Name : {{ result.user_name }}</h5>
                         <a href="allAnswer/{{result.ansId }}" class="btn btn-primary btn-block">View Analysis</a>
@@ -55,7 +56,9 @@
             {% for video in video.all reversed %}
             <div class="col-md-4" style="margin-top:10px ;">
                 <div class="card" style="width: 18rem; margin: 5px 5px 5px 5px;">
-                    <video controls src="{{ url }}{{ video.videoAns }}" type="video/webm"></video>
+                    <video style="width: auto; height: 240px;" controls>
+                        <source src="{{ url }}{{ video.videoAns }}" type="video/webm">
+                      </video>
                     <div class="card-body">
                         <h5 class="card-title">User Name : {{ video.user_name }}</h5>
                         <a href="{{video.ansId }}" class="btn btn-primary btn-block">View Analysis</a>
